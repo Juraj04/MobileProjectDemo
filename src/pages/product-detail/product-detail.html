@@ -1,0 +1,79 @@
+<!--
+  Generated template for the ProductDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color="primary">
+        <ion-title class="name">{{product.name}}</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content id="content">
+
+
+    <img id="image" src={{product.photo}}>
+    <h1 align="center" id="name" class="name"> {{product.name}}</h1>
+    <h2 align="center" id="location" text-capitalize>
+        <ion-chip color="light" (click)="showInMap()">
+            <ion-label>{{product.location.name}}</ion-label>
+            <ion-icon color="light" name="pin"></ion-icon>
+        </ion-chip>
+    </h2>
+
+    <h3 id="info" align="center" outline>
+        <ion-grid id="gridButtons">
+            <ion-row>
+                <ion-col>
+                    <span id="price">
+                        <ion-chip color="light">
+                            <ion-label>{{product.price}}</ion-label>
+                            <ion-icon color="primary" name="ios-cash-outline"></ion-icon>
+                        </ion-chip>
+                    </span>
+                </ion-col>
+
+                <ion-col>
+                    <span id="rating">
+                        <ion-chip color="light" large>
+                            <ion-icon color="primary" name="md-star-outline"></ion-icon>
+                            <ion-label>{{product.rating}}</ion-label>
+                        </ion-chip>
+
+                    </span>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </h3>
+
+    <p id="tags" align="center"><span *ngFor="let tag of product.tags" id="tag"> #{{tag }} </span></p>
+
+    <ion-fab right bottom>
+        <button ion-fab color="{{getColorByRating()}}">
+            <ion-icon name="{{getEmojiByRating()}}"></ion-icon>
+        </button>
+        <ion-fab-list side="top">
+            <button ion-fab color="primary" (click)="ratingMinus()">
+                <ion-icon name="md-thumbs-down"></ion-icon>
+            </button>
+            <button ion-fab color="primary" (click)="ratingPlus()">
+                <ion-icon name="md-thumbs-up"></ion-icon>
+            </button>
+
+        </ion-fab-list>
+    </ion-fab>
+
+    <!--
+    <ion-fab right bottom>
+        <button ion-fab color="pink" (click)="showInMap()">
+            <ion-icon name="pin"></ion-icon>
+        </button>
+    </ion-fab>
+    -->
+
+
+</ion-content>

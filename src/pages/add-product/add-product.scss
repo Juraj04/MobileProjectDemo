@@ -1,0 +1,36 @@
+page-add-product {
+
+  #img{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    display: block;
+    margin: auto;
+    height: 60%;
+
+  }
+
+  #gridButtons{
+    padding-top: 0%;
+    padding-bottom: 0%;
+
+  }
+
+  #photoButton{
+    float: left;
+    border-radius: 5px;
+    border-color: #c8c7cc;
+    margin-left: 0%;
+  }
+
+  #galeryButton{
+    float: right;
+    border-radius: 5px;
+    border-color: #c8c7cc;
+    margin-right: 0%;
+  }
+
+  #locationButton{
+    border-radius: 5px;
+    border-color: #c8c7cc;
+  }
+
+}

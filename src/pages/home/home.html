@@ -1,14 +1,48 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-navbar color="primary">
+        <ion-searchbar id="search"
+                       [(ngModel)]="searchInput"
+                       [showCancelButton]="shouldShowCancel"
+                       (ionInput)="selectProducts()">
+        </ion-searchbar>
+    </ion-navbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ion-list>
+
+        <ion-item-sliding id="item" *ngFor="let product of products">
+            <ion-item (click)="productDetail(product)">
+                <ion-thumbnail item-start>
+                    <img src={{product.photo}}>
+                </ion-thumbnail>
+
+                <h1 class="name">{{product.name}}</h1>
+                <p class="description">
+                    {{product.location.name}} • {{product.rating}}
+                    <ion-icon name="ios-star-outline"></ion-icon>
+                </p>
+                <h1 class="price" item-end>{{product.price}}</h1>
+                <p class="euro" item-end>€</p>
+
+            </ion-item>
+
+            <ion-item-options side="right">
+                <button ion-button color="primary" (click)="removeProduct(product)">
+                    <ion-icon name="delete"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+
+        </ion-item-sliding>
+    </ion-list>
+
+    <ion-fab right bottom>
+        <button ion-fab color="primary" (click)="createProduct()">
+            <ion-icon name="add"></ion-icon>
+        </button>
+    </ion-fab>
 </ion-content>
